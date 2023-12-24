@@ -2,6 +2,8 @@ import { createTheme, ThemeProvider, Button } from "@mui/material";
 import { useState } from "react";
 import { Provider } from "react-redux";
 import store from "./app/store";
+import AppRouter from "./router/AppRouter";
+
 
 function App() {
   const theme = createTheme({
@@ -19,7 +21,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <Provider store={store}>
-          <div>Merhaba Murat</div>
+          <AppRouter />
           <Button variant="contained" color="primary">
             Click me
           </Button>
