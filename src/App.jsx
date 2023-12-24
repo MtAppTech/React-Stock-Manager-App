@@ -1,5 +1,7 @@
-import { createTheme, ThemeProvider , Button } from "@mui/material";
+import { createTheme, ThemeProvider, Button } from "@mui/material";
 import { useState } from "react";
+import { Provider } from "react-redux";
+import store from "./app/store";
 
 function App() {
   const theme = createTheme({
@@ -16,10 +18,12 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <div>Merhaba Murat</div>
-        <Button variant="contained" color="primary">
-          Click me
-        </Button>
+        <Provider store={store}>
+          <div>Merhaba Murat</div>
+          <Button variant="contained" color="primary">
+            Click me
+          </Button>
+        </Provider>
       </ThemeProvider>
     </>
   );
