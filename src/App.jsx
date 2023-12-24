@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Provider } from "react-redux";
 import store from "./app/store";
 import AppRouter from "./router/AppRouter";
-
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const theme = createTheme({
@@ -22,10 +22,9 @@ function App() {
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <AppRouter />
-          <Button variant="contained" color="primary">
-            Click me
-          </Button>
+          
         </Provider>
+        <ToastContainer />
       </ThemeProvider>
     </>
   );
