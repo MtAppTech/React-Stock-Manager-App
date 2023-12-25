@@ -17,7 +17,7 @@ const authSlice = createSlice({
     },
     registerSuccess: (state, { payload }) => {
       state.loading = false;
-      state.createSlice = payload.data.username;
+      state.currentUser = payload.data.username;
       state.token = payload.token;
     },
     fetchFail: (state) => {

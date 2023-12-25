@@ -12,6 +12,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import useAuthCall from "../hooks/useAuthCall";
 
 const SignupSchema = Yup.object().shape({
   firstName: Yup.string() // Defined values must be the same as the form
@@ -37,6 +38,7 @@ const SignupSchema = Yup.object().shape({
     .required("Notwendig!"),
 });
 const Register = () => {
+  const { register } = useAuthCall();
   return (
     <Container maxWidth="lg">
       <Grid
@@ -83,6 +85,8 @@ const Register = () => {
             onSubmit={(values, actions) => {
               // same shape as initial values
               console.log(values);
+              register(values);
+              actions.resetForm();
             }}
           >
             {({
@@ -138,6 +142,17 @@ const Register = () => {
                     value={values.email}
                     error={touched.email && Boolean(errors.email)}
                     helperText={touched.email && errors.email}
+                  />
+                  <TextField
+                    id="password"
+                    type="password"
+                    name="password"
+                    label="Password"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    helperText={touched.password && errors.password}
+                    error={touched.password && Boolean(errors.password)}
                   />
                   <Button
                     variant="contained"
