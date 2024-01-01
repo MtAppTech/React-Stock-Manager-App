@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "..//helper/ToastNotify";
+const BASE_URL= import.meta.env.VITE_BASE_URL;
 
 const useAuthCall = () => {
   const dispatch = useDispatch(); //use to define the fetchStart function
@@ -20,7 +21,7 @@ const useAuthCall = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axios.post(
-        "https://17107.fullstack.clarusway.com/users/", //17107  10002
+        `${BASE_URL}users/`, //17107  10002
         userInfo
       );
       console.log("register", data);
@@ -34,7 +35,8 @@ const useAuthCall = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axios.post(
-        `https://17107.fullstack.clarusway.com/auth/login/`,
+        //`https://17107.fullstack.clarusway.com/auth/login/`,
+        `${BASE_URL}auth/login/`,
         userInfo
       );
       dispatch(loginSuccess(data));
